@@ -39,10 +39,19 @@
 pip install streamlit boto3
 export TI_FS_FILE_SYSTEM_ID=<file-system-id>
 export AGENT_RUNTIME_ARN=<runtime-arn>   # agentcore deploy の出力の RuntimeArn
-streamlit run ui/app.py
+streamlit run ui/app.py --server.address localhost
 ```
 
+`--server.address localhost` を付けて、手元の PC からだけ開けるようにしてください。
+Streamlit は既定でネットワーク全体に公開され、画面には認証がありません。
+同じネットワークの人が、あなたの AWS 認証情報でエージェントを呼び出せてしまいます。
+
 右側のプレビューには、TiDB Cloud FS の `/agents/site/index.html` が表示されます。
+
+## 複数のユーザーで使う場合
+
+会話は `/agents/session/<セッションID>/` に保存され、トークンは `/agents` 全体を読み書きできます。
+同じランタイムを複数のユーザーで使う場合は、ユーザーごとに `TiDBFilesystemStorage` の `prefix`（例：`agents/<user-id>/`）とトークンのスコープを分けてください。
 
 ## 後片付け
 

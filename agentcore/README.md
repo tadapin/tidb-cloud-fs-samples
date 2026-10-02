@@ -39,8 +39,12 @@ AgentCore Runtime で動くエージェントです。マウントせずに `ti 
 pip install streamlit boto3
 export TI_FS_FILE_SYSTEM_ID=<file-system-id>
 export AGENT_RUNTIME_ARN=<runtime-arn>   # agentcore deploy の出力の RuntimeArn
-streamlit run ui/app.py
+streamlit run ui/app.py --server.address localhost
 ```
+
+`--server.address localhost` を付けて、手元の PC からだけ開けるようにしてください。
+Streamlit は既定でネットワーク全体に公開され、画面には認証がありません。
+同じネットワークの人が、あなたの AWS 認証情報でエージェントを呼び出せてしまいます。
 
 右側のプレビューには、TiDB Cloud FS の `/site/index.html` が表示されます。
 
