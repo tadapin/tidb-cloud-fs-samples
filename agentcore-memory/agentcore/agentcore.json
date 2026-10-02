@@ -1,0 +1,47 @@
+{
+  "$schema": "https://schema.agentcore.aws.dev/v1/agentcore.json",
+  "name": "tifsmem",
+  "version": 1,
+  "managedBy": "CDK",
+  "tags": {
+    "agentcore:created-by": "agentcore-cli",
+    "agentcore:project-name": "tifsmem"
+  },
+  "runtimes": [
+    {
+      "name": "lpagent",
+      "build": "Container",
+      "entrypoint": "main.py",
+      "codeLocation": "app/lpagent/",
+      "runtimeVersion": "PYTHON_3_12",
+      "networkMode": "PUBLIC",
+      "protocol": "HTTP",
+      "envVars": [
+        {
+          "name": "TI_FS_TOKEN_SECRET_ID",
+          "value": "tifsmem/ti-fs-token"
+        },
+        {
+          "name": "TI_REGION_CODE",
+          "value": "aws-ap-southeast-1"
+        }
+      ],
+      "additionalPolicies": [
+        "secrets-policy.json"
+      ]
+    }
+  ],
+  "memories": [],
+  "knowledgeBases": [],
+  "credentials": [],
+  "evaluators": [],
+  "onlineEvalConfigs": [],
+  "agentCoreGateways": [],
+  "policyEngines": [],
+  "configBundles": [],
+  "abTests": [],
+  "harnesses": [],
+  "datasets": [],
+  "capacityProviders": [],
+  "payments": []
+}
