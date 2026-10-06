@@ -1,0 +1,25 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "lpagent"
+version = "0.1.0"
+description = "AgentCore Runtime Application using Strands SDK"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "aws-opentelemetry-distro ~= 0.18.0",
+    "bedrock-agentcore[strands-agents] >= 1.18.1",
+    "botocore[crt] >= 1.35.0",
+    "mcp >= 1.28.1, < 2.0.0",
+    "strands-agents >= 1.15.0",
+    "strands-harness>=0.1.2",
+    "strands-tidb-filesystem",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["."]
+
+[tool.uv.sources]
+strands-tidb-filesystem = { git = "https://github.com/tadapin/strands-tidb-filesystem.git", tag = "v0.1.0" }

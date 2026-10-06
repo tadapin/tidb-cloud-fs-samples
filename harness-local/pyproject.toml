@@ -1,0 +1,11 @@
+[project]
+name = "harness-local"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "strands-harness>=0.1.2",
+    "strands-tidb-filesystem",
+]
+
+[tool.uv.sources]
+strands-tidb-filesystem = { git = "https://github.com/tadapin/strands-tidb-filesystem.git", rev = "v0.1.0" }

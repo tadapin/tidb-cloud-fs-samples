@@ -9,6 +9,8 @@ Zenn のブログシリーズ「TiDB Cloud Filesystem」で使ったサンプル
 | [`strands-local/`](strands-local/) | 手元の Mac で動く Strands Agents。マウントした TiDB Cloud FS を作業場所にして LP を作る | [Strands AgentsでTiDB Cloud Filesystemを作業場所にする](https://zenn.dev/bohnen/articles/strands-agents-tidb-cloud-fs) |
 | [`agentcore/`](agentcore/) | Amazon Bedrock AgentCore Runtime で動くエージェント。`ti fs` で成果物を TiDB Cloud FS に残す。Streamlit のチャット画面つき | [TiDB Cloud FSでStrands Agents/AgentCoreの成果物を永続化する](https://zenn.dev/bohnen/articles/agentcore-tidb-cloud-fs) |
 | [`agentcore-memory/`](agentcore-memory/) | 上と同じ構成で、[strands-tidb-filesystem](https://github.com/tadapin/strands-tidb-filesystem) を使って会話と成果物の両方を TiDB Cloud FS に保存する | [Strands Agentsの会話と成果物をTiDB Cloud Filesystemに保存する](https://zenn.dev/bohnen/articles/strands-tidb-filesystem-memory) |
+| [`harness-local/`](harness-local/) | 手元で動く Strands harness。`Sandbox` を差し替え、成果物・会話・記憶を TiDB Cloud FS に保存する（マウントなし） | [Strands harnessの作業場所をTiDB Cloud Filesystemにする](https://zenn.dev/bohnen/articles/strands-harness-tidb-cloud-fs) |
+| [`harness-agentcore/`](harness-agentcore/) | 上のエージェントを AgentCore Runtime で動かす | [Strands harnessをAgentCoreで動かし、作業場所をTiDB Cloud Filesystemにする](https://zenn.dev/bohnen/articles/agentcore-strands-harness-tidb-cloud-fs) |
 
 ## 共通の前提
 
