@@ -58,8 +58,11 @@ agentcore invoke --session-id lp-session-agentcore-0001-aaaaaaaaaaaa \
 ```bash
 agentcore remove all -y
 agentcore deploy -y
-aws logs delete-log-group --region ap-northeast-1 \
-  --log-group-name /aws/bedrock-agentcore/runtimes/<runtime-id>-DEFAULT
+# Runtime・CodeBuild・Lambda のロググループ（名前にプロジェクト名が入る）
+for g in $(aws logs describe-log-groups --region ap-northeast-1 \
+    --query "logGroups[?contains(logGroupName, 'tifsharness')].logGroupName" --output text); do
+  aws logs delete-log-group --region ap-northeast-1 --log-group-name "$g"
+done
 aws secretsmanager delete-secret --region ap-northeast-1 \
   --secret-id tifsharness/ti-fs-token --force-delete-without-recovery
 ti fs list-file-system-tokens --file-system-id <file-system-id> --output text

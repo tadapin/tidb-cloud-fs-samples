@@ -53,7 +53,11 @@ Streamlit は既定でネットワーク全体に公開され、画面には認�
 ```bash
 agentcore remove all -y
 agentcore deploy -y
-aws logs delete-log-group --log-group-name /aws/bedrock-agentcore/runtimes/<runtime-id>-DEFAULT
+# Runtime・CodeBuild・Lambda のロググループ（名前にプロジェクト名が入る）
+for g in $(aws logs describe-log-groups \
+    --query "logGroups[?contains(logGroupName, 'tifslp')].logGroupName" --output text); do
+  aws logs delete-log-group --log-group-name "$g"
+done
 aws secretsmanager delete-secret --secret-id tifslp/ti-fs-token --force-delete-without-recovery
 ti fs list-file-system-tokens --file-system-id <file-system-id> --output text
 ti fs delete-file-system-token --file-system-id <file-system-id> --token-id <token-id>
